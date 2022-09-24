@@ -1,0 +1,332 @@
+/*
+=====
+DEPENDENCES
+=====
+*/
+
+.r-link{
+  display: var(--rLinkDisplay, inline-flex) !important;
+}
+
+.r-link[href]{
+  color: var(--rLinkColor) !important;
+  text-decoration: var(--rLinkTextDecoration, none) !important;
+}
+
+.r-list{
+  padding-left: var(--rListPaddingLeft, 0) !important;
+  margin-top: var(--rListMarginTop, 0) !important;
+  margin-bottom: var(--rListMarginBottom, 0) !important;
+  list-style: var(--rListListStyle, none) !important;
+}
+
+
+/*
+=====
+CORE STYLES
+=====
+*/
+
+.menu{
+  --rLinkColor: var(--menuLinkColor, currentColor);
+}
+
+.menu__link{
+  display: var(--menuLinkDisplay, block);
+}
+/*
+specifies display behaviour
+/*
+
+/* 
+focus state 
+*/
+
+.menu__link:focus{
+  outline: var(--menuLinkOutlineWidth, 2px) solid var(--menuLinkOutlineColor, currentColor);
+  outline-offset: var(--menuLinkOutlineOffset);
+}
+/*
+offset adds transparent spacing between outline and border or edge
+/*
+
+/* 
+fading siblings
+*/
+
+.menu:hover .menu__link:not(:hover){
+  --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
+}
+
+/*
+Red Green Blue Transparency
+/*
+
+/*
+=====
+PRESENTATION STYLES
+=====
+*/
+
+.menu{
+  background-image: linear-gradient(to right, #0068fa, #37a0d9, #03fcf4);
+  background-color: var(--menuBackgroundColor, #f0f0f0);
+  box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));
+}
+
+.menu__list{
+  display: flex;  
+}
+
+.menu__link{
+  padding: var(--menuLinkPadding, 24px 40px);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+/*
+Text transform controls capitalization of text
+weight sets how thick thin the text is displayed 
+/*
+/* 
+=====
+TEXT UNDERLINED
+=====
+*/
+
+.text-underlined{
+  position: relative;
+  overflow: hidden;
+
+  will-change: color;
+  transition: color .25s ease-out;  
+}
+
+/*
+Overflow specifies what happens if content overflows and element box
+will change hints to browsers how an element is expected to change
+transitions allows you to change property values smoothly, over a given duration
+*/
+
+.text-underlined::before, 
+.text-underlined::after{
+  width: 0;
+  height: 3px;
+  background-color: var(--textUnderlinedLineColor, currentColor);
+
+  will-change: width;
+  transition: width .1s ease-out;
+
+  position: absolute;
+  bottom: 0;
+}
+
+.text-underlined::before{
+  left: 50%;
+  transform: translateX(-50%); 
+}
+
+.text-underlined::after{
+  right: 50%;
+  transform: translateX(50%); 
+}
+
+/*
+ transform applies a 2D or 3D transformation to an element. This property allows you to rotate, scale, move, etc
+*/
+
+.text-underlined:hover::before, 
+.text-underlined:hover::after{
+  width: 100%;
+  transition-duration: .2s;
+}
+
+/*
+=====
+SETTINGS
+=====
+*/
+
+.page__custom-settings{
+  --menuBackgroundColor: #37a0d9;
+  --menuLinkColor: #fff;
+  --menuLinkColorUnactive: #241c69;
+  --menuLinkOutlineOffset: -8px; 
+}
+
+/*
+=====
+DEMO
+=====
+*/
+
+body{
+  font-family: BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
+  margin: 0;
+  
+  display: flex;  
+  flex-direction: column;
+}
+
+/*
+flex direction specifies the direction of the flexible items
+*/
+
+.page{
+  box-sizing: border-box;
+  max-width: 640px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin: auto;
+}
+
+.page__menu:nth-child(n+2){
+  margin-top: 48px;
+}
+
+
+.substack{
+  border:1px solid #EEE; 
+  background-color: #fff;
+  width: 100%;
+  max-width: 480px;
+  height: 280px;
+  margin: 16px auto;;
+}
+
+.linktr{
+  display: flex;
+  justify-content: center;
+  background-color: rgb(209, 246, 255);
+  padding: 32px;
+  text-align: center;
+}
+
+/*
+ justify content aligns the flexible container's items when the items do not use all available space
+ border radius defines the radius of the element's corners
+*/
+
+.linktr__goal{
+  border: 2px solid rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color: rgb(8, 49, 112);
+  border-radius: 32px;
+  padding: 8px 20px;
+}
+
+.r-link{
+    --uirLinkDisplay: var(--rLinkDisplay, inline-flex);
+    --uirLinkTextColor: var(--rLinkTextColor);
+    --uirLinkTextDecoration: var(--rLinkTextDecoration, none);
+
+    display: var(--uirLinkDisplay) !important;
+    color: var(--uirLinkTextColor) !important;
+    text-decoration: var(--uirLinkTextDecoration) !important;
+}
+
+/*
+ text decoration specifies the decoration added to text
+*/
+
+nav ul li a:hover,
+nav ul li a.active{
+  color: white;
+  text-decoration: none;
+}
+nav ul ul{
+  position: absolute;
+  top: 85px;
+  opacity: 0;
+  visibility: hidden;
+  color: var(--rLinkColor);
+  background-color: var(--menuBackgroundColor, #f0f0f0);
+  background-image: linear-gradient(to right, #0068fa, #37a0d9, #03fcf4);
+  padding: var(--menuLinkPadding, 15px);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-left: 10px;
+  padding-right: 12px;
+}
+nav ul li:hover > ul{
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+  transition: .3s linear;
+  text-decoration: none;
+}
+
+li a {
+	text-decoration: none;
+	color: black;
+	text-align: center;
+}
+
+/*
+This CSS is used for the background of the AddRental page
+*/
+.color{
+background: linear-gradient(rgba(204, 208, 213, 0.1), rgba(225, 232, 241, 0.1)), url(Car.jpg);
+-webkit-background-size: cover;
+background-size: cover;
+height: 100vh;
+}
+
+/*
+All of the CSS below used for the form
+*/
+form {
+  background: -webkit-linear-gradient(bottom, #CCD0D5, #E1E8F1 175px); 
+  background: linear-gradient(bottom, #CCD0D5, #E1E8F1 175px);
+  margin: auto;
+  position: relative;
+  width: 450px;
+  height: 430px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-style: bold;
+  line-height: 19px;
+  color: #00000;
+  text-decoration: none;
+  border-radius: 18px;
+  padding: 10px;
+  border: 4px solid #000000;
+}
+
+/*
+Input box border css
+*/
+input {
+ border: 3px solid black;
+ 
+}
+
+legend {
+    margin:0 auto;
+}
+
+* { 
+margin: 0; 
+}
+
+/*
+CSS below used to make screen not scrollable.
+*/
+body,
+html{
+width: 100%;
+height: 100%;
+padding: 0;
+}
+
+/*
+CSS below used to make Fieldset title bigger and bold.
+*/
+legend {
+    font-size:  1.3em;
+    font-weight:  bold;
+    position:  relative;
+}
+
+
+
+

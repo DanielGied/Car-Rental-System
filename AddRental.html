@@ -1,0 +1,89 @@
+<!-- 
+Name of screen: AddRental.html
+Purpose of screen: Add rental categorys to the database with details for each rental category
+Student ID: C00260331
+Date: March, 2022
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<!-- Title of the page -->
+<title> 
+Car Rental System
+</title>
+
+<link rel="stylesheet" href="Form.css"> <!-- Link to css page -->
+</head>
+
+<!-- Nav bar Menu at the top of the page, user can go between different screens -->
+<body>
+	<section>
+		<nav class="page__menu page__custom-settings menu">			
+			<ul class="menu__list r-list">
+			<li class="menu__group"><a href="menu.html" class="menu__link r-link text-underlined">Main Menu</a></li>
+			<li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Car</a></li>
+			<li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Company</a></li>
+			<li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Blacklist</a> 
+			<li class="menu__group">
+			<a href="#0" class="menu__link r-link text-underlined">Category</a>
+			<ul>
+					<li><a href="AddRental.html">Add Renal Category</a></li>
+					<br>
+					<li><a href="DeleteRental.html.php">Delete Rental Category</a></li>
+					<br>
+					<li><a href="AmendViewRental.html.php">Amend/view Category</a></li>
+				</ul>
+			</li>
+			<li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Returns</a></li>
+			<li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Rentals</a></li>
+			<li class="menu__group"><a href="#0" class="menu__link r-link text-underlined">Rental Report</a></li>
+			<li class="menu__group"><a href="CarReport.php" class="menu__link r-link text-underlined">Car Report</a></li>
+			</ul>
+		</nav>
+	</section>
+
+<!-- Color div is used for the background image -->
+<div class="color">
+<h3 align="center">
+<br/><br/>
+</h3>
+<br><br><br><br>
+
+<!-- Form begins here -->
+<form id="form1" name="form1" action="AddRental.php" method="post">
+
+ <fieldset id="1">
+ 
+  <legend><h3>Add a New Rental Category</h3></legend>
+  
+  <br>
+  
+  <!-- User enters Rental Category Identification in the form -->
+  <p><label for = "rentalcategory"> Rental Category Identification: </label> <input type="text" name="rentalcategory" id="rentalcategory" pattern="[A-Za-z]{1}" placeholder = "Example A"
+		autocomplete=off required/>
+  </p><br><br><br>
+  
+  <!-- User enters Standard Cost Per Day in the form -->
+  <p><label for="standardcost">Standard Cost Per Day (€): </label> <input type="number" name="standardcost" id="standardcost" step="0.01" min="0" placeholder = "Example 20" required/>
+  </p><br><br><br>
+  
+  <!-- User enters Five day discount in the form -->
+  <p><label for="fiveday">Five day discount (%): </label> <input type="number" name="fiveday" id="fiveday" step="0.01" min="0" max="100" placeholder = "Example 3" required/>
+  </p><br><br><br> 
+  
+  <!-- User enters Ten day discount in the form -->
+  <p><label for="tenday">Ten day discount (%): </label> <input type="number" name="tenday" id="tenday" step="0.01" min="0" max="100" placeholder = "Example 7" required/>
+  </p><br><br><br> 
+  
+  <!-- Add rental category option and clear option -->
+  <center><input type="submit" value="Add rental category" onclick="return confirm('Click (OK) If the details you entered are correct');">
+  <input type="reset" value = "Clear" onclick="return confirm('Click (OK) If you want to clear the data');"/></center>
+
+</fieldset>
+
+</form>
+</body>
+</html>
